@@ -1,0 +1,49 @@
+/* Desktop (Default in global.css) */
+
+/* Laptop / Small Desktop (max-width: 1200px) */
+@media (max-width: 1200px) {
+  :root {
+    --spacing-xl: 6rem;
+  }
+}
+
+/* Tablet (max-width: 992px) */
+@media (max-width: 992px) {
+  :root {
+    --spacing-xl: 5rem;
+  }
+  
+  .section-title {
+    font-size: 2.2rem;
+  }
+}
+
+/* Large Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+  :root {
+    --spacing-lg: 3rem;
+    --spacing-xl: 4rem;
+    --nav-height: 70px;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+}
+
+/* Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  :root {
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2.5rem;
+    --spacing-xl: 3.5rem;
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+  }
+}
