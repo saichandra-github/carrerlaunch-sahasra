@@ -21,8 +21,8 @@
 
 .activities-timeline-item {
   position: relative;
-  padding-left: 60px;
-  margin-bottom: 40px;
+  padding-left: 50px;
+  margin-bottom: 24px;
 }
 
 .activities-timeline-item:last-child {
@@ -47,7 +47,7 @@
 }
 
 .activities-timeline-content {
-  padding: 25px;
+  padding: 20px;
   border-radius: 16px;
 }
 

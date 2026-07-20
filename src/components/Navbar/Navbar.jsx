@@ -1,7 +1,6 @@
-import { useState, useEffect, useContext } from 'react';
-import { motion, useScroll, useSpring } from 'framer-motion';
-import { Code, User, Briefcase, GraduationCap, Mail, Sun, Moon } from 'lucide-react';
-import { ThemeContext } from '../../App';
+import { useState, useEffect } from 'react';
+import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
+import { Code, User, Briefcase, GraduationCap, Mail, Menu, X } from 'lucide-react';
 import './Navbar.css';
 
 const navItems = [
@@ -16,7 +15,8 @@ const navItems = [
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('hero');
   const [isScrolled, setIsScrolled] = useState(false);
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -48,7 +48,12 @@ const Navbar = () => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      setIsMobileMenuOpen(false);
     }
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
@@ -63,7 +68,8 @@ const Navbar = () => {
           Portfolio
         </div>
         
-        <ul className="navbar-links">
+        {/* Desktop Links */}
+        <ul className="navbar-links desktop-only">
           {navItems.map((item) => (
             <li key={item.id}>
               <button
@@ -86,19 +92,52 @@ const Navbar = () => {
         </ul>
 
         <div className="navbar-actions">
-          <button 
-            className="theme-toggle interactive" 
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-          >
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+          <button className="cta-button interactive desktop-only" onClick={() => scrollToSection('contact')}>
+            Let's Talk
           </button>
           
-          <button className="cta-button interactive" onClick={() => scrollToSection('contact')}>
-            Let's Talk
+          {/* Mobile Menu Toggle */}
+          <button 
+            className="mobile-menu-toggle interactive" 
+            onClick={toggleMobileMenu}
+            aria-label="Toggle mobile menu"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </nav>
+
+      {/* Mobile Menu Dropdown */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div 
+            className="mobile-menu glass"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            <ul className="mobile-navbar-links">
+              {navItems.map((item) => (
+                <li key={item.id}>
+                  <button
+                    className={`mobile-nav-link ${activeSection === item.id ? 'active' : ''}`}
+                    onClick={() => scrollToSection(item.id)}
+                  >
+                    <span className="nav-icon">{item.icon}</span>
+                    {item.label}
+                  </button>
+                </li>
+              ))}
+              <li>
+                <button className="mobile-cta-button" onClick={() => scrollToSection('contact')}>
+                  Let's Talk
+                </button>
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
       
       {/* Scroll Progress Line */}
       <motion.div 

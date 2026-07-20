@@ -10,7 +10,7 @@
 }
 
 .about-text {
-  padding: 28px;
+  padding: 16px;
 }
 
 .about-text h3 {
@@ -37,8 +37,8 @@
 .info-card {
   display: flex;
   align-items: flex-start;
-  gap: 20px;
-  padding: 28px; /* Increased card padding */
+  gap: 16px;
+  padding: 20px;
 }
 
 .icon-wrapper {

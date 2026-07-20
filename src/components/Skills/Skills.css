@@ -6,16 +6,16 @@
 .skills-simple-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 24px;
+  gap: 16px;
   width: 100%;
 }
 
 .simple-skill-card {
-  padding: 30px 24px;
-  border-radius: 20px;
+  padding: 20px;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;

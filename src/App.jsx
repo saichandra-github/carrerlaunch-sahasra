@@ -1,4 +1,4 @@
-import { useEffect, useState, createContext } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AnimatePresence } from 'framer-motion';
@@ -12,22 +12,8 @@ import Footer from './components/Footer/Footer';
 
 import './App.css';
 
-export const ThemeContext = createContext(null);
-
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('portfolio_theme') || 'dark';
-  });
-
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
-  };
-
-  useEffect(() => {
-    localStorage.setItem('portfolio_theme', theme);
-    document.documentElement.setAttribute('data-theme', theme);
-  }, [theme]);
 
   useEffect(() => {
     // Initialize Lenis
@@ -56,7 +42,7 @@ function App() {
   }, []);
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <>
       <Toaster position="top-right" />
       <CustomCursor />
       
@@ -75,7 +61,7 @@ function App() {
           </div>
         )}
       </AnimatePresence>
-    </ThemeContext.Provider>
+    </>
   );
 }
 
