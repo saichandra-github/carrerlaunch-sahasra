@@ -21,7 +21,7 @@ export const portfolioData = {
       { id: 3, text: "+91 9059361527", icon: "📞" },
       { id: 4, text: "B.Tech – Data Science", icon: "🎓" },
       { id: 5, text: "Kakatiya Institute of Technology and Sciences", icon: "🏫" },
-      { id: 6, text: "Expected Graduation: 2027", icon: "📅" }
+      { id: 6, text: "Expected Graduation: 2029", icon: "📅" }
     ]
   },
   contact: {
@@ -74,7 +74,7 @@ export const portfolioData = {
       degree: "Bachelor of Technology",
       major: "Data Science",
       minor: "",
-      graduation: "Expected 2027",
+      graduation: "Expected 2029",
       cgpa: "Semester 1 Results Awaited (1st Year, 2nd Sem)",
       coursework: ["Data Science", "Artificial Intelligence", "Machine Learning", "Data Analytics", "DBMS"],
       achievements: "Active member of the Data Science Club, participated in multiple Hackathons."
