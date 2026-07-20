@@ -55,6 +55,14 @@ const CustomCursor = () => {
   return (
     <>
       <motion.div
+        className="cursor-glow"
+        animate={{
+          x: mousePosition.x - 200,
+          y: mousePosition.y - 200,
+        }}
+        transition={{ type: 'tween', ease: 'linear', duration: 0 }}
+      />
+      <motion.div
         className="cursor-dot"
         animate={{
           x: mousePosition.x - 4,

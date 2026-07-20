@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
 import { Tilt } from 'react-tilt';
-import { Github, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import './ProjectCard.css';
 
 const defaultTiltOptions = {
@@ -36,7 +36,7 @@ const ProjectCard = ({ project, index }) => {
     >
       <Tilt options={defaultTiltOptions} className="project-card-wrapper">
         <div 
-          className="project-card glass interactive"
+          className="project-card glass interactive hover-lift"
           onMouseMove={handleMouseMove}
         >
           {/* Spotlight Effect */}
@@ -54,7 +54,7 @@ const ProjectCard = ({ project, index }) => {
           />
 
           <div className="project-image-container">
-            <img src={project.image || "https://placehold.co/600x400/1a1a1a/8b5cf6?text=Project"} alt={project.title} className="project-image" />
+            <img src={project.image || "https://placehold.co/600x400/1a1a1a/8b5cf6?text=Project"} alt={project.title} className="project-image" loading="lazy" />
           </div>
 
           <div className="project-content">
@@ -68,12 +68,18 @@ const ProjectCard = ({ project, index }) => {
             
             <p className="project-description">{project.description}</p>
             
-            <div className="project-footer">
-              <div className="tech-stack">
-                {project.tech?.map((tech, i) => (
-                  <span key={i} className="tech-pill">{tech}</span>
-                ))}
-              </div>
+            <div className="tech-stack" style={{ marginBottom: '20px' }}>
+              {project.tech?.map((tech, i) => (
+                <span key={i} className="tech-pill">{tech}</span>
+              ))}
+            </div>
+
+            <div className="project-links">
+              {project.demo && project.demo !== '#' && (
+                <a href={project.demo} target="_blank" rel="noreferrer" className="btn btn-icon" aria-label={`Live demo for ${project.title}`}>
+                  <ExternalLink size={18} /> Demo
+                </a>
+              )}
             </div>
           </div>
         </div>

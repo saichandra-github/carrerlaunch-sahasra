@@ -1,59 +1,107 @@
-.activities {
+.activities.section {
   position: relative;
 }
 
-.activities-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px; /* Reduced gap */
+.activities-timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px 0;
 }
 
-.activity-card {
-  display: flex;
-  gap: 20px;
-  padding: 28px; /* Increased card padding */
+.activities-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20px;
+  height: 100%;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--accent-secondary), var(--accent-primary), transparent);
 }
 
-.activity-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: rgba(217, 70, 239, 0.1);
+.activities-timeline-item {
+  position: relative;
+  padding-left: 60px;
+  margin-bottom: 40px;
+}
+
+.activities-timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.activities-timeline-dot {
+  position: absolute;
+  left: 6px;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 2px solid var(--accent-secondary);
+  box-shadow: 0 0 10px rgba(217, 70, 239, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--accent-secondary);
-  flex-shrink: 0;
+  z-index: 2;
 }
 
-.activity-content h3 {
-  font-size: 1.25rem;
-  margin-bottom: 4px;
+.activities-timeline-content {
+  padding: 25px;
+  border-radius: 16px;
 }
 
-.activity-content h4 {
-  font-size: 1rem;
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.activity-header h3 {
+  font-size: 1.25rem;
+  margin: 0;
+  color: var(--text-primary);
 }
 
 .activity-period {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   font-size: 0.85rem;
   color: var(--text-secondary);
   background: rgba(255, 255, 255, 0.05);
-  padding: 2px 10px;
+  padding: 4px 12px;
   border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.activities-timeline-content h4 {
+  font-size: 1rem;
   margin-bottom: 12px;
 }
 
-.activity-content p {
+.activities-timeline-content p {
   color: var(--text-secondary);
   font-size: 0.95rem;
-  line-height: 1.5;
+  line-height: 1.6;
+  margin: 0;
 }
 
 @media (max-width: 768px) {
-  .activity-card {
+  .activities-timeline::before {
+    left: 15px;
+  }
+  .activities-timeline-dot {
+    left: 1px;
+    width: 28px;
+    height: 28px;
+  }
+  .activities-timeline-item {
+    padding-left: 45px;
+  }
+  .activity-header {
     flex-direction: column;
   }
 }

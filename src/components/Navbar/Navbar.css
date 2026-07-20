@@ -26,8 +26,10 @@
 }
 
 .navbar-container.scrolled .navbar {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(20, 20, 30, 0.7);
+  backdrop-filter: blur(12px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .navbar-logo {
